@@ -1,0 +1,31 @@
+@import "../tokens";
+@import "../mixins";
+
+// Margin Spacing
+@mixin margin-spacing-classes-em {
+  @each $size, $value in $margin-spacing-values-em {
+    .m-#{$size} {
+      margin: $value;
+    }
+  }
+}
+
+$margin-spacing-values-em: map-merge(
+  (
+    "default": map-get($margin-spacing-values-em, 1),
+  ),
+  $margin-spacing-values-em
+) !global;
+@forward "responsive-spacing-styles";
+
+// Padding Block
+@mixin generate-padding-classes($map) {
+  @each $key, $value in $map {
+    .padding-#{$key} {
+      padding-block: $value;
+    }
+  }
+}
+
+@include generate-padding-classes($padding-block);
+@include margin-spacing-classes-em;

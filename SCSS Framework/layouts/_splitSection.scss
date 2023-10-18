@@ -1,0 +1,24 @@
+.split-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @for $i from 1 through 20 {
+    &.mq-#{$i*100} {
+      @media screen and (max-width: #{$i*100}px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .text-wrap {
+    @include wrapper();
+  }
+
+  .img-wrap {
+    position: relative;
+
+    img {
+      @include cover-img();
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.flow {
+  @each $selector, $value in $margin-bottom-spacing-values {
+    #{$selector} {
+      margin-bottom: $value;
+    }
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

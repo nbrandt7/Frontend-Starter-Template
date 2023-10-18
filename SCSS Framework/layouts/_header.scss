@@ -1,0 +1,32 @@
+:root {
+    --nav-mobile-mq: 1300px;
+}
+
+header {
+
+    &.scrolling {
+        //Add sticky header styles if needed
+    }
+
+    #nav-toggle {
+        display: none;
+
+        &:checked {
+            ~ nav {
+
+            }
+        }
+    }
+
+    // Logo home link
+    .logo-container {
+        img {
+
+        }
+    }
+
+    // Main nav
+    nav {
+
+    }
+}

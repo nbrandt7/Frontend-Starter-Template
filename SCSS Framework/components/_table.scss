@@ -1,0 +1,59 @@
+table {
+  &.mobile-responsive {
+    $mobile-mq: 1000px;
+
+    // Set media query to when table should Collapse
+    @media screen and (max-width: $mobile-mq) {
+      width: 100%;
+
+      // Hide thead elements since they will show in the body
+      thead {
+        overflow: hidden;
+        max-height: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      td {
+        display: block;
+        font-weight: normal;
+        border-bottom: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        p {
+          margin-top: 10px;
+        }
+
+        // Set before words to the label attribute from thead using js
+        &:before {
+          content: attr(label) ": ";
+          text-transform: capitalize;
+          font-weight: bold;
+          color: black;
+          display: block;
+        }
+
+        &[label="example"] {
+          // Specify unique styles for certain header words
+        }
+      }
+
+      tr {
+        display: block;
+        padding: 10px 0;
+        border-bottom: 5px solid grey;
+      }
+
+      tfoot {
+        border-bottom: 5px solid grey;
+
+        td {
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

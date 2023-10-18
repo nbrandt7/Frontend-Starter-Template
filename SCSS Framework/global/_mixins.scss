@@ -1,0 +1,84 @@
+@import "tokens";
+
+@mixin wrapper($display: block) {
+	margin: 0 auto;
+	width: 100%;
+	position: relative;
+  display: $display;
+
+  @each $breakpoint, $padding in $padding-inline {
+    @if $breakpoint == initial {
+      // Apply initial padding
+      padding-inline: $padding;
+    } @else {
+      // Apply media query
+      @media (max-width: #{$breakpoint}px) {
+        padding-inline: $padding;
+      }
+    }
+  }
+}
+
+
+//Font faces
+@mixin font-face(
+  $font-family,
+  $font-path,
+  $font-weight: normal,
+  $font-style: normal
+) {
+  @font-face {
+    font-family: #{$font-family};
+    src: url("#{$font-path}.eot");
+    src: url("#{$font-path}.eot?#iefix") format("embedded-opentype"),
+      url("#{$font-path}.woff2") format("woff2"),
+      url("#{$font-path}.woff") format("woff"),
+      url("#{$font-path}.ttf") format("truetype");
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+//Animation speed (fast, norm, slow)
+@mixin animate($speed) {
+  @if $speed == "fast" {
+    // 0.2 seconds
+    transition: all map-get($timings, "fast") $timing-function;
+  } @else if $speed == "norm" {
+    // 0.5 seconds
+    transition: all map-get($timings, "norm") $timing-function;
+  } @else if $speed == "slow" {
+    // 2 seconds
+    transition: all map-get($timings, "slow") $timing-function;
+  }
+}
+
+//Customize scrollbar styling for Chrome, Edge, and Firefox
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+
+  scrollbar-color: $foreground-color $background-color;
+  scrollbar-width: thin;
+}

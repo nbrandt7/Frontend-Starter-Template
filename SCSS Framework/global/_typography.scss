@@ -1,0 +1,22 @@
+@each $class, $font-size in $heading-styles {
+  .#{$class} {
+    font-size: $font-size;
+  }
+}
+
+// Normal
+@include font-face("Font-Normal", $font-path, normal, normal);
+
+// Bold
+@include font-face("Font-Bold", $font-path, bold, normal);
+
+// Semi-Bold
+@include font-face(
+  "Font-Semi-Bold",
+  $font-path,
+  $font-weight: normal,
+  $font-style: normal
+);
+
+$font: "Font-Normal";
+$font-h: "Font-Bold";

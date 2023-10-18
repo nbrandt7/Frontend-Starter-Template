@@ -1,0 +1,86 @@
+// Fonts & Spacing
+$font-sizes: (
+  xs: 12px,
+  sm: 14px,
+  base: 16px,
+  md: 18px,
+  lg: 20px,
+  xl: 24px,
+);
+
+$heading-styles: (
+  heading-1: 28px,
+  heading-2: 24px,
+  heading-3: 20px,
+  heading-4: 18px,
+);
+
+$font-weights: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  black: 900,
+);
+
+// Colors
+$color-values: (
+  primary: #ada0a6,
+  secondary: #d2cbcb,
+  tetra: #d2cbcb,
+  accent: #7d938a,
+  neutral: #f9e7e7,
+  white: #fff,
+  black: #000,
+);
+
+$color-shades: (
+  light: 5,
+  dark: 25,
+);
+
+//Global site spacing
+$margin-bottom-spacing-values: (
+  h1: 2.25em,
+  h2: 2em,
+  h3: 2em,
+  h4: 0em,
+  h5: 0em,
+  p: 2.75em,
+  ul: 0em,
+  a: 0em,
+  ".btn": 0em,
+);
+
+$padding-inline: (
+  initial: 5vw,
+  // Initial site inline padding
+  1000: 3vw,
+  // Media query and change of site inline padding globally
+  500: 2vw,
+);
+
+$padding-block: (
+  100: 10px 10px,
+  200: 20px 20px,
+  300: 30px 30px,
+  400: 40px 40px,
+  500: 50px 50px,
+);
+
+//Transition Timings
+$timings: (
+  slow: 0.8s,
+  norm: 0.5s,
+  fast: 0.3,
+);
+
+$timing-function: ease;
+
+//Base Button Styles
+$btn-styles: (
+  border-radius: 5px,
+  height: 50px,
+  width: Min(100%, 270px),
+);

@@ -1,0 +1,62 @@
+$color-values: (
+  primary: #ada0a6,
+  secondary: #d2cbcb,
+  tetra: #d2cbcb,
+  accent: #9dd624,
+  neutral: #f3f3f3,
+  white: #fff,
+  black: #000,
+);
+
+$color-shades: (
+  light: 5,
+  dark: 25,
+);
+
+@function generate-shades($base-color, $shades) {
+  $shaded-colors: ();
+  @each $shade, $amount in $shades {
+    $shaded-colors: map-merge(
+      $shaded-colors,
+      (
+        #{$shade}: darken($base-color, $amount),
+        light-#{$shade}: lighten($base-color, $amount)
+      )
+    );
+  }
+  @return $shaded-colors;
+}
+
+$colors: ();
+
+@each $color, $value in $color-values {
+  $shaded-colors: generate-shades($value, $color-shades);
+  $colors: map-merge(
+    $colors,
+    (
+      #{$color}:
+        (
+          base: $value,
+          shades:
+            $shaded-colors
+            // Corrected the map key name here,
+        )
+    )
+  );
+}
+
+@function clr($base, $shade: base) {
+  $color: map-get(
+    map-get($colors, $base),
+    shades
+  ); // Updated map key to 'shades'
+  @return map-get($color, $shade);
+}
+
+// Example usage:
+$primary-light: clr(primary, light);
+$secondary-dark: clr(secondary, dark);
+
+.primary {
+  color: $primary-light;
+}

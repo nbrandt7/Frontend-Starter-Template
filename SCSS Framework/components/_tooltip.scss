@@ -1,0 +1,43 @@
+@import "../global/_mixins";
+
+$padding: 10px 15px;
+$background: white;
+$color: black;
+$transition-speed: slow; // slow || norm || fast
+$starting-offset: -10px;
+$arrowSize: 8px;
+
+*[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .tooltip-text {
+      transform: translate(-50%, 0) scale(1);
+      opacity: 1;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .tooltip-text {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, $starting-offset) scale(0.96);
+    background-color: $background;
+    border-radius: 3px;
+    opacity: 0;
+    @include animate($transition-speed);
+
+    &::after {
+      @include pseudo(block, absolute);
+      bottom: 100%;
+      left: 50%;
+      margin-left: -#{$arrowSize / 2}; // Center the arrow
+      border-width: 0px $arrowSize $arrowSize $arrowSize;
+      border-style: solid;
+      border-color: transparent transparent $background transparent;
+      transform: translate(-50%, 0) rotate(180deg); // Rotate the triangle
+    }
+  }
+}
